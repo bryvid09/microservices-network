@@ -23,10 +23,10 @@ start: ## Start the containers
 	docker network create codenip-microservices-network || true
 	cp -n docker-compose.yml.dist docker-compose.yml || true
 	cp -n .env.dist .env || true
-	U_ID=${UID} docker-compose up -d
+	U_ID=${UID} docker compose up -d
 
 stop: ## Stop the containers
-	U_ID=${UID} docker-compose stop
+	U_ID=${UID} docker compose stop
 
 restart: ## Restart the containers
 	$(MAKE) stop && $(MAKE) start
@@ -35,7 +35,7 @@ build: ## Rebuilds all the containers
 	docker network create codenip-microservices-network || true
 	cp -n docker-compose.yml.dist docker-compose.yml || true
 	cp -n .env.dist .env || true
-	U_ID=${UID} docker-compose build
+	U_ID=${UID}  build
 
 prepare: ## Runs backend commands
 	$(MAKE) composer-install

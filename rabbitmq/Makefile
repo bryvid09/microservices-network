@@ -10,10 +10,10 @@ help: ## Show this help message
 	@egrep '^(.+)\:\ ##\ (.+)' ${MAKEFILE_LIST} | column -t -c 2 -s ':#'
 
 start: ## Start the containers
-	U_ID=${UID} docker-compose up -d
+	U_ID=${UID} docker compose up -d
 
 stop: ## Stop the containers
-	U_ID=${UID} docker-compose stop
+	U_ID=${UID} docker compose stop
 
 restart: ## Restart the containers
 	$(MAKE) stop && $(MAKE) start
