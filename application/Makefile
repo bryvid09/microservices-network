@@ -3,6 +3,7 @@
 OS = $(shell uname)
 UID = $(shell id -u)
 DOCKER_BE = codenip-ms-application-service-be
+DOCKER_DB = codenip-ms-application-service-db
 NAMESERVER_IP = $(shell ip address | grep docker0)
 
 ifeq ($(OS),Darwin)
@@ -53,6 +54,9 @@ be-logs: ## Tails the Symfony dev log
 
 ssh-be: ## bash into the be container
 	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bash
+
+ssh-db:
+	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_DB} bash
 
 code-style: ## Runs php-cs to fix code styling following Symfony rules
 	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} php-cs-fixer fix src --rules=@Symfony
