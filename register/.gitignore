@@ -9,3 +9,6 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+### Other files and folders
+docker-compose.yml
