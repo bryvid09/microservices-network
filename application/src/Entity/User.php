@@ -11,16 +11,16 @@ class User
     private string $id;
     private string $name;
     private string $email;
-    private string $password;
+    private ?string $password;
     private \DateTime $createdOn;
 
-    public function __construct(string $id, string $name, string $email, string $password, \DateTime $createdOn)
+    public function __construct(string $name, string $email)
     {
         $this->id = Uuid::v4()->toRfc4122();
         $this->name = $name;
         $this->email = $email;
-        $this->password = $password;
-        $this->createdOn = $createdOn;
+        $this->password = null;
+        $this->createdOn = new \DateTime();
     }
 
     public function getId(): string
